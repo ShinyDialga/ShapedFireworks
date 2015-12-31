@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.CommandBlock;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -36,16 +37,10 @@ public class ShapedFireworkCommand {
                     DyeColor dyeColor = wool.getColor();
                     FireworkWoolColor fireworkColor = FireworkWoolColor.getFireworkColor(dyeColor);
                     commands.add("/summon FireworksRocketEntity " + block.getX() + " " + block.getY() + " " + block.getZ() + " {LifeTime:0,FireworksItem:{id:401,Count:1,tag:{Fireworks:{Explosions:[{Type:0,Flicker:0,Trail:0,Colors:[" + fireworkColor.fireworkColor + "],FadeColors:[" + fireworkColor.fireworkColor + "]}]}}}}");
-                    List<Block> barrierBlocks = new ArrayList<>();
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX(), block.getY() + 1, block.getZ())); //up
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX(), block.getY() - 1, block.getZ())); //down
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX(), block.getY(), block.getZ() - 1)); //north
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX() + 1, block.getY(), block.getZ())); //east
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX(), block.getY(), block.getZ() + 1)); //south
-                    barrierBlocks.add(player.getWorld().getBlockAt(block.getX() - 1, block.getY(), block.getZ())); //west
-                    for (Block barrierBlock : barrierBlocks) {
-                        if (barrierBlock.getType().equals(Material.AIR)) {
-                            barrierBlock.setType(Material.BARRIER);
+                    for (BlockFace face : BlockFace.values()) {
+                        Block b = block.getRelative(face);
+                        if (b.getType().equals(Material.AIR)) {
+                            b.setType(Material.BARRIER);
                         }
                     }
                     block.setType(Material.BARRIER);

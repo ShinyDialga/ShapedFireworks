@@ -10,20 +10,24 @@
 
     <repositories>
         <repository>
+            <id>spigot</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
+        </repository>
+        <repository>
             <id>overcast-repo</id>
-            <url>https://repo.oc.tc/content/groups/public/</url>
+            <url>https://repo.oc.tc/content/groups/public</url>
         </repository>
         <repository>
             <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/artifactory/repo/com/sk89q/worldedit/</url>
+            <url>http://maven.sk89q.com/artifactory/repo</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.8.7-R0.1-SNAPSHOT</version>
+            <artifactId>spigot-api</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.sk89q</groupId>
