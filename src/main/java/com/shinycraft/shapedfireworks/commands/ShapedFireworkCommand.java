@@ -27,7 +27,6 @@ public class ShapedFireworkCommand {
     public static void shapedfirework(final CommandContext args, CommandSender sender) throws Exception {
         Player player = (Player)sender;
         List<String> commands = new ArrayList<>();
-        List<Block> doneBlocks = new ArrayList<>();
         Selection s = ShapedFireworks.getWorldEdit().getSelection((Player)sender);
         try {
             for (BlockVector blockVector : s.getRegionSelector().getRegion()) {
@@ -45,19 +44,11 @@ public class ShapedFireworkCommand {
                     barrierBlocks.add(player.getWorld().getBlockAt(block.getX(), block.getY(), block.getZ() + 1)); //south
                     barrierBlocks.add(player.getWorld().getBlockAt(block.getX() - 1, block.getY(), block.getZ())); //west
                     for (Block barrierBlock : barrierBlocks) {
-                        boolean intercepts = false;
-                        for (Block doneBlock : doneBlocks) {
-                            if (barrierBlock.getLocation().equals(doneBlock.getLocation())) {
-                                intercepts = true;
-                                break;
-                            }
-                        }
-                        if (barrierBlock.getType().equals(Material.AIR) && !intercepts) {
+                        if (barrierBlock.getType().equals(Material.AIR)) {
                             barrierBlock.setType(Material.BARRIER);
                         }
                     }
-                    block.setType(Material.AIR);
-                    doneBlocks.add(block);
+                    block.setType(Material.BARRIER);
                 }
             }
         } catch (NullPointerException e) {
