@@ -8,3 +8,5 @@ An example using my server logo:
 http://i.imgur.com/5NSF5SL.gifv
 
 Based off of the MCEdit filter: https://www.youtube.com/watch?v=AJYPQof3yVc
+
+SpigotMC resource: https://www.spigotmc.org/resources/shapedfireworks.16415/
