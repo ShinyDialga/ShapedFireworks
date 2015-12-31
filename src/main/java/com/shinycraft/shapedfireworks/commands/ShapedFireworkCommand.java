@@ -72,7 +72,7 @@ public class ShapedFireworkCommand {
                 Block block = player.getWorld().getBlockAt(x, y, z);
                 block.setType(Material.COMMAND);
                 Block redstone = player.getWorld().getBlockAt(x, y + 1, z);
-                redstone.setType(Material.REDSTONE);
+                redstone.setType(Material.REDSTONE_WIRE);
                 CommandBlock commandBlock = (CommandBlock)block.getState();
                 commandBlock.setCommand(string);
                 commandBlock.update();
